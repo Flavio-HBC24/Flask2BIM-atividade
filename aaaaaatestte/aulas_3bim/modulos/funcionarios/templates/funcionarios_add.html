@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+    {% set mensagens = get_flashed_messages() %}
+    {% if mensagens %}
+        {% for msg in mensagens %}
+            <div>
+                {{ msg }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    <form action="/funcionarios/save" method="post">
+        <div>
+            <label for="nome">Nome: </label>
+            <input type="text" name="nome" id="nome" required>
+        </input>
+        </div>
+    
+            <label for="cargo">Cargo: </label>
+            <input type="text" name="cargo" id="cargo" required>
+        </input>
+        </div>
+        <div>
+
+        <div>
+            <label for="empresa">Empresa: </label>
+                <select name="id_empresa" id="id_empresa" required>
+                    <option value=""></option>
+                    {% for e in empresa %}
+                    <option value="{{e.id_empresa}}">{{e.nome}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit">Salvar</button>
+        </form>    
+
+{% endblock %}
